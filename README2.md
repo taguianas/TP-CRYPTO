@@ -17,7 +17,9 @@ Assurez-vous d'avoir Python installé ainsi que les librairies suivantes :
 
 **analyse.py** : Script pour vérifier les modifications.
 
-**cloud-security-201908120550101.jpg** : Votre image source .
+**cloud-security-201908120550101.jpg** : Image source .
+
+**cloud-security-encoded.png** : Image encoded
 
 ### Guide d'utilisation
 
