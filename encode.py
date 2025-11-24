@@ -1,48 +1,46 @@
 from PIL import Image
-import numpy as np
-import matplotlib.pyplot as plt
 
-def analyse_images(original_path, encoded_path):
-    
-    orig = np.array(Image.open(original_path).convert("RGB"))
-    mod  = np.array(Image.open(encoded_path).convert("RGB"))
+input_path = r"C:\Users\manag\Desktop\cloud-security-201908120550101.jpg"
+output_path = r"C:\Users\manag\Desktop\cloud-security-encoded.png"
+message = "Winter is coming and the night is full of fears"
 
-   
-    lsb_orig = orig & 1
-    lsb_mod  = mod  & 1
+def encode_message(input_image_path, output_image_path, message):
+    img = Image.open(input_image_path)
+    img = img.convert("RGB")
+    pixels = img.load()
+    width, height = img.size
 
+    bitstream = ""
+    for char in message:
+        bitstream += format(ord(char), "08b")
+    bitstream += "00000000"  # terminator
 
-    diff = np.abs(lsb_orig - lsb_mod)
-    bits_modifies = np.sum(diff)
+    capacity = width * height * 3
+    if len(bitstream) > capacity:
+        raise ValueError("Message too long for this image.")
 
- 
-    mse = np.mean((orig - mod) ** 2)
+    idx = 0
+    for y in range(height):
+        for x in range(width):
+            if idx >= len(bitstream):
+                break
 
-    
-    heatmap = np.sum(diff, axis=2)
-    plt.imshow(heatmap, cmap="hot")
-    plt.title("Heatmap des pixels modifiés")
-    plt.colorbar()
-    plt.show()
+            r, g, b = pixels[x, y]
 
-    print("Bits modifiés :", bits_modifies)
-    print("MSE :", mse)
+            if idx < len(bitstream):
+                r = (r & ~1) | int(bitstream[idx])
+                idx += 1
+            if idx < len(bitstream):
+                g = (g & ~1) | int(bitstream[idx])
+                idx += 1
+            if idx < len(bitstream):
+                b = (b & ~1) | int(bitstream[idx])
+                idx += 1
 
+            pixels[x, y] = (r, g, b)
+        if idx >= len(bitstream):
+            break
 
-    fig, ax = plt.subplots(1, 2, figsize=(12, 5))
-    ax[0].imshow(orig)
-    ax[0].set_title("Image originale")
-    ax[0].axis("off")
-
-    ax[1].imshow(mod)
-    ax[1].set_title("Image encodée")
-    ax[1].axis("off")
-
-    plt.show()
-
-    return bits_modifies, mse
-
-original = r"C:\Users\manag\Desktop\cloud-security-201908120550101.jpg"
-encoded  = r"C:\Users\manag\Desktop\cloud-security-encoded.png"
-
-analyse_images(original, encoded)
+    img.save(output_image_path)
+encode_message(input_path, output_path, message)
+output_path
