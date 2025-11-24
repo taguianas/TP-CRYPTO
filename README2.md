@@ -17,7 +17,7 @@ Assurez-vous d'avoir Python installé ainsi que les librairies suivantes :
 
 **analyse.py** : Script pour vérifier les modifications.
 
-**mon_image.png** : Votre image source .
+**cloud-security-201908120550101.jpg** : Votre image source .
 
 ### Guide d'utilisation
 
@@ -28,9 +28,9 @@ Lancez le script d'encodage. Vous pouvez modifier le message directement dans le
 `python encode.py`
 
 
-**Entrée** : mon_image.png
+**Entrée** : cloud-security-201908120550101.jpg
 
-**Sortie** : Crée un fichier image_secrete.png contenant le message.
+**Sortie** : Crée un fichier cloud-security-encoded.png contenant le message.
 
 **2. Lire un message (Anas)**
 
@@ -39,7 +39,7 @@ Si vous recevez une image suspecte, utilisez le script de décodage pour révél
 `python decode.py`
 
 
-**Entrée** : image_secrete.png
+**Entrée** : cloud-security-encoded.png
 
 **Sortie** : Affiche le texte caché dans le terminal.
 

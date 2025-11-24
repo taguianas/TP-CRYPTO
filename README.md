@@ -15,7 +15,7 @@ Puisque ce bit ne vaut que "1" sur une échelle de 0 à 255, sa modification cha
 
 **Comparaison Visuelle** 
 
-**Observation** : En comparant l'image originale (mon_image.png) et l'image modifiée (image_secrete.png) côte à côte, aucune différence n'est visible à l'œil nu. Les couleurs semblent strictement identiques.
+**Observation** : En comparant l'image originale (cloud-security-201908120550101.jpg) et l'image modifiée (image_secrete.png) côte à côte, aucune différence n'est visible à l'œil nu. Les couleurs semblent strictement identiques.
 
 **Analyse Statistique**
 
