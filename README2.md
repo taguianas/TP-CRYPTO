@@ -28,9 +28,9 @@ Lancez le script d'encodage. Vous pouvez modifier le message directement dans le
 `python encode.py`
 
 
-Entrée : mon_image.png
+**Entrée** : mon_image.png
 
-Sortie : Crée un fichier image_secrete.png contenant le message.
+**Sortie** : Crée un fichier image_secrete.png contenant le message.
 
 **2. Lire un message (Anas)**
 
