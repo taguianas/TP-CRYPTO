@@ -17,16 +17,16 @@ Puisque ce bit ne vaut que "1" sur une échelle de 0 à 255, sa modification cha
 
 **Observation** : En comparant l'image originale (mon_image.png) et l'image modifiée (image_secrete.png) côte à côte, aucune différence n'est visible à l'œil nu. Les couleurs semblent strictement identiques.
 
-Analyse Statistique (Exemple de données)
+**Analyse Statistique**
 
 
 Nombre de bits modifiés : 27875
 
-Pourcentage de modification : 
+Pourcentage de modification : 21,33%
 
 MSE (Mean Squared Error) : 4.823151125401929e-05
 
-Carte de Chaleur (Heatmap)
+**Carte de Chaleur (Heatmap)**
 
 La carte de chaleur générée par le script d'analyse montre clairement la zone où le message est écrit. Contrairement à l'image normale où tout semble uniforme, la heatmap révèle les pixels exacts dont le LSB a été inversé, concentrés généralement en haut de l'image (puisque le script écrit de gauche à droite, ligne par ligne).
 
@@ -38,5 +38,5 @@ Bien que cette méthode soit efficace pour cacher un message à un observateur h
 
 **Sécurité nulle** : Le message n'est pas chiffré. N'importe qui soupçonnant une stéganographie peut extraire les LSB et lire le texte (ou voir l'en-tête du fichier caché). Pour sécuriser l'échange, il faudrait chiffrer le message (ex: AES) avant de le cacher.
 
-Détectabilité statistique : Une analyse statistique poussée (histogramme des couleurs) peut révéler une distribution anormale des bits pairs et impairs, trahissant la présence d'un message caché.
+**Détectabilité statistique** : Une analyse statistique poussée (histogramme des couleurs) peut révéler une distribution anormale des bits pairs et impairs, trahissant la présence d'un message caché.
 
